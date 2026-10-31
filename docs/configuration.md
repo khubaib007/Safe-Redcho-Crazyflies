@@ -1,4 +1,4 @@
-# Configuration: commissioning-v0.1.0
+# Configuration: flight-v0.1.0
 
 Initialize editable files once:
 
@@ -38,7 +38,7 @@ file. Changing configured initial_position does not move the physical aircraft.
 
 ## Edition's profile
 
-Use `config/local/lab_config.yaml` for single-aircraft commissioning and `config/local/fleet_config.yaml` for six-aircraft hover/swaps. The seven-leg swap planner must pass with actual captured starts.
+Use `config/local/redcho_hardware.yaml` and its referenced `fleet_redcho.yaml`. Six names cf1–cf6 are mandatory. The full formation sweep must fit the inflated arena.
 
 Do not edit generated backend configurations. They are overwritten. Do not mix
 nodes from different editions or overlays. Domain 43 separates the documented

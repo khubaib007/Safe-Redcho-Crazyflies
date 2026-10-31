@@ -1,6 +1,6 @@
 # Changelog
 
-## commissioning-v0.1.0
+## flight-v0.1.0
 
 Initial standalone hardware edition with complete guides, pinned/patch-verified
 dependencies, isolated local configuration, offline tests and CI. Preparation

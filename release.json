@@ -1,9 +1,11 @@
 {
-  "edition": "commissioning",
-  "title": "Safe REDCHO Hardware Bringup",
+  "edition": "flight",
+  "title": "Safe REDCHO Six-Aircraft Full-State",
   "version": "0.1.0",
-  "tag": "commissioning-v0.1.0",
+  "tag": "flight-v0.1.0",
   "packages": [
-    "safe_redcho_bringup"
+    "safe_redcho_bringup",
+    "safe_redcho_flight",
+    "safe_redcho_telemetry"
   ]
 }

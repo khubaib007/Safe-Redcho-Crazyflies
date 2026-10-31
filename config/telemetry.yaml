@@ -1,0 +1,174 @@
+names:
+- cf1
+- cf2
+- cf3
+- cf4
+- cf5
+- cf6
+output_root: results/live_telemetry
+onboard_config_file: config/telemetry_onboard.yaml
+subscription_depth: 100
+writer:
+  layout: wide
+  queue_batches: 2000
+  flush_s: 1.0
+convergence_thresholds:
+  velocity_redcho:
+    velocity_mps: 0.003
+    acceleration_mps2: 0.01
+    jerk_mps3: 0.05
+  position_redcho:
+    displacement_m: 0.01
+    velocity_mps: 0.003
+    acceleration_mps2: 0.01
+nodes:
+  flight:
+    record_enabled: true
+    terminal_enabled: true
+    terminal_period_s: 1.0
+    terminal_values_per_agent: 10
+    derive_mocap_velocity: true
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - battery.voltage_v
+    - onboard_pose.position_m.*
+    - onboard_telemetry_kinematics.velocity_mps.*
+    - onboard_telemetry_kinematics.acceleration_mps2.*
+    variables:
+      battery: true
+      battery.voltage_v: true
+      onboard_pose: true
+      onboard_pose.position_m: true
+      onboard_pose.rpy_rad: true
+      onboard_pose.orientation_xyzw: true
+      onboard_telemetry_kinematics: true
+      onboard_telemetry_kinematics.velocity_mps: true
+      onboard_telemetry_kinematics.acceleration_raw_g: true
+      onboard_telemetry_kinematics.acceleration_mps2: true
+      onboard_telemetry_gyro: true
+      mocap: true
+      mocap.position_m: true
+      mocap.rpy_rad: true
+      mocap.derived_velocity_mps: true
+      availability: true
+  reference:
+    record_enabled: true
+    terminal_enabled: true
+    terminal_period_s: 1.0
+    terminal_values_per_agent: 10
+    algorithm_groups:
+    - governor
+    - svf
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - governor.input_voltage_v
+    - governor.speed_scale
+    - governor.output_velocity_mps.x
+    - svf.output_velocity_mps.x
+    - svf.output_acceleration_mps2.x
+    - svf.output_jerk_mps3.x
+    variables:
+      governor: true
+      governor.input_voltage_v: true
+      governor.input_unscaled_velocity_mps: true
+      governor.phase_before: true
+      governor.phase_after: true
+      governor.speed_scale: true
+      governor.output_velocity_mps: true
+      svf: true
+      svf.input_velocity_mps: true
+      svf.output_displacement_m: true
+      svf.output_velocity_mps: true
+      svf.output_acceleration_mps2: true
+      svf.output_jerk_mps3: true
+      svf.poststep_snap_mps4: true
+      svf.state_before: true
+      svf.state_after: true
+      availability: true
+  redcho:
+    record_enabled: true
+    terminal_enabled: true
+    terminal_period_s: 1.0
+    terminal_values_per_agent: 10
+    algorithm_groups:
+    - velocity_redcho
+    - position_redcho
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - velocity_redcho.output.velocity_mps.x
+    - position_redcho.output.displacement_m.x
+    - position_redcho.output.displacement_m.z
+    - convergence.*.*.max_pair_disagreement
+    - convergence.*.*.max_average_tracking_error
+    variables:
+      velocity_redcho: true
+      velocity_redcho.input: true
+      velocity_redcho.output: true
+      velocity_redcho.internal_state_before: true
+      velocity_redcho.internal_state_after: true
+      velocity_redcho.neighbor_zeroth_order: true
+      position_redcho: true
+      position_redcho.input: true
+      position_redcho.output: true
+      position_redcho.internal_state_before: true
+      position_redcho.internal_state_after: true
+      position_redcho.neighbor_zeroth_order: true
+      convergence: true
+      availability: true
+  control:
+    record_enabled: true
+    terminal_enabled: true
+    terminal_period_s: 1.0
+    terminal_values_per_agent: 12
+    algorithm_groups:
+    - nominal
+    - qp
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - nominal.u_nom_mps2.*
+    - qp.filtered_acceleration_mps2.*
+    - qp.intervention_norm_mps2
+    - qp.inequality_solver_invoked
+    - qp.hocbf_rows_binding
+    - qp.solver_wall_s
+    - qp.solver_status
+    - qp.accepted_feasible
+    variables:
+      nominal: true
+      nominal.desired_position_m: true
+      nominal.desired_velocity_mps: true
+      nominal.desired_acceleration_mps2: true
+      nominal.virtual_position_m: true
+      nominal.virtual_velocity_mps: true
+      nominal.position_error_m: true
+      nominal.velocity_error_mps: true
+      nominal.position_feedback_mps2: true
+      nominal.velocity_feedback_mps2: true
+      nominal.u_nom_mps2: true
+      qp: true
+      qp.rows: true
+      qp.reference_position_m: true
+      qp.reference_velocity_mps: true
+      qp.previous_acceleration_mps2: true
+      qp.nominal_acceleration_mps2: true
+      qp.filtered_acceleration_mps2: true
+      qp.intervention_mps2: true
+      qp.intervention_norm_mps2: true
+      qp.solver_wall_s: true
+      qp.solver_status: true
+      qp.solver_message: true
+      published_full_state: true
+      onboard_target: true
+      availability: true

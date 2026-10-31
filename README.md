@@ -1,8 +1,8 @@
-# Safe REDCHO Hardware Bringup
+# Safe REDCHO Six-Aircraft Full-State
 
-One-aircraft hover and six-aircraft serial swaps using high-level services. No REDCHO or HOCBF-QP controller.
+Original six-aircraft distributed dual-REDCHO reference governor with reciprocal HOCBF-QP.
 
-**Edition:** `commissioning-v0.1.0` · **Aircraft:** One or six · **Interface:** High-level services
+**Edition:** `flight-v0.1.0` · **Aircraft:** Six: cf1–cf6 · **Interface:** Full-state position/velocity/acceleration references
 
 The repository starts private for review. Each tag contains a complete edition
 and guides. The current checkout's controller is identified in `release.json`.
@@ -19,8 +19,8 @@ and guides. The current checkout's controller is identified in `release.json`.
 Ubuntu 24.04 / Python 3.12:
 
 ```bash
-git clone --branch commissioning-v0.1.0 --depth 1 https://github.com/khubaib007/safe-redcho-hardware.git safe-redcho-hw-commissioning
-cd safe-redcho-hw-commissioning
+git clone --branch flight-v0.1.0 --depth 1 https://github.com/khubaib007/safe-redcho-hardware.git safe-redcho-hw-flight
+cd safe-redcho-hw-flight
 bash scripts/setup.sh offline
 bash scripts/verify.sh
 bash scripts/test.sh

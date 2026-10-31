@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "edition": "commissioning",
+  "edition": "flight",
   "checks": [
     {
       "command": [
@@ -26,7 +26,7 @@
         "scripts/run.py",
         "offline",
         "--output",
-        "$CHECKOUT/results/tests_20261031T193234_890801Z/offline_default"
+        "$CHECKOUT/results/tests_20261031T193234_880682Z/offline_default"
       ],
       "exit_code": 0,
       "log": "02.log"

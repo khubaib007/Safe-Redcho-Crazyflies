@@ -1,4 +1,8 @@
 Starting >>> safe_redcho_bringup
 Finished <<< safe_redcho_bringup [1.19s]
+Starting >>> safe_redcho_telemetry
+Finished <<< safe_redcho_telemetry [1.19s]
+Starting >>> safe_redcho_flight
+Finished <<< safe_redcho_flight [1.21s]
 
-Summary: 1 package finished [1.30s]
+Summary: 3 packages finished [3.70s]
