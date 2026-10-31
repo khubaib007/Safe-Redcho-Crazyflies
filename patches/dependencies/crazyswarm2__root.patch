@@ -1,0 +1,163 @@
+diff --git a/crazyflie_server_cpp/src/crazyflie_server.cpp b/crazyflie_server_cpp/src/crazyflie_server.cpp
+index f6f2d6d..5441a7c 100644
+--- a/crazyflie_server_cpp/src/crazyflie_server.cpp
++++ b/crazyflie_server_cpp/src/crazyflie_server.cpp
+@@ -1,3 +1,5 @@
++#include <cmath>
++#include <stdexcept>
+ #include <memory>
+ #include <vector>
+ #include <regex>
+@@ -301,6 +303,80 @@ public:
+       int numParams = 0;
+       RCLCPP_INFO(logger_, "[%s] Requesting parameters...", name_.c_str());
+       cf_.requestParamToc(/*forceNoCache*/false, /*requestValues*/query_all_values_on_connect);
++      // Set parameters as specified in the configuration files, as in the following order
++      // 1.) check all/firmware_params
++      // 2.) check robot_types/<type_name>/firmware_params
++      // 3.) check robots/<robot_name>/firmware_params
++      // where the higher order is used if defined on multiple levels.
++
++      // <group>.<name> -> value map
++      std::map<std::string, rclcpp::ParameterValue> set_param_map;
++
++      // check global settings/firmware_params
++      update_map(set_param_map, "all.firmware_params");
++      // check robot_types/<type_name>/firmware_params
++      update_map(set_param_map, "robot_types." + cf_type + ".firmware_params");
++      // check robots/<robot_name>/firmware_params
++      update_map(set_param_map, "robots." + name_ + ".firmware_params");
++
++      // Update parameters
++      for (const auto&i : set_param_map) {
++        std::string paramName = name + ".params." + std::regex_replace(i.first, std::regex("\\."), ".");
++        change_parameter(rclcpp::Parameter(paramName, i.second));
++      }
++
++      // SAFE_REDCHO_POST_CONFIG_READBACK_V1
++      // The library cache must now come from post-configuration radio reads.
++      RCLCPP_INFO(logger_, "[%s] Requesting post-configuration firmware readback...", name_.c_str());
++      cf_.requestParamToc(/*forceNoCache*/true, /*requestValues*/true);
++      // Verify the radio readings independently of the ROS parameter cache.
++      for (const auto & configured : set_param_map) {
++        const auto separator = configured.first.find('.');
++        if (separator == std::string::npos) {
++          throw std::runtime_error("Invalid configured firmware parameter: " + configured.first);
++        }
++        const auto group = configured.first.substr(0, separator);
++        const auto parameter = configured.first.substr(separator + 1);
++        const auto * entry = cf_.getParamTocEntry(group, parameter);
++        if (!entry) {
++          throw std::runtime_error("Configured firmware parameter missing from readback TOC: " + configured.first);
++        }
++        double actual = 0.0;
++        switch (entry->type) {
++        case Crazyflie::ParamTypeUint8:
++          actual = cf_.getParam<uint8_t>(entry->id); break;
++        case Crazyflie::ParamTypeInt8:
++          actual = cf_.getParam<int8_t>(entry->id); break;
++        case Crazyflie::ParamTypeUint16:
++          actual = cf_.getParam<uint16_t>(entry->id); break;
++        case Crazyflie::ParamTypeInt16:
++          actual = cf_.getParam<int16_t>(entry->id); break;
++        case Crazyflie::ParamTypeUint32:
++          actual = cf_.getParam<uint32_t>(entry->id); break;
++        case Crazyflie::ParamTypeInt32:
++          actual = cf_.getParam<int32_t>(entry->id); break;
++        case Crazyflie::ParamTypeFloat:
++          actual = cf_.getParam<float>(entry->id); break;
++        default:
++          throw std::runtime_error("Unsupported configured firmware parameter type: " + configured.first);
++        }
++        double expected = 0.0;
++        if (configured.second.get_type() == rclcpp::PARAMETER_INTEGER) {
++          expected = static_cast<double>(configured.second.get<int64_t>());
++        } else if (configured.second.get_type() == rclcpp::PARAMETER_DOUBLE) {
++          expected = configured.second.get<double>();
++        } else {
++          throw std::runtime_error("Configured firmware parameter must be numeric: " + configured.first);
++        }
++        if (!std::isfinite(actual) || !std::isfinite(expected) ||
++            std::fabs(actual - expected) > 1e-5) {
++          throw std::runtime_error(
++            "Startup firmware readback mismatch for " + name_ + "." + configured.first +
++            ": expected=" + std::to_string(expected) + ", read=" + std::to_string(actual));
++        }
++      }
++      // Initialize ROS values from the readings, never the intended YAML values.
++      query_all_values_on_connect = true;
+       for (auto iter = cf_.paramsBegin(); iter != cf_.paramsEnd(); ++iter) {
+         auto entry = *iter;
+         std::string paramName = name + ".params." + entry.group + "." + entry.name;
+@@ -373,28 +449,7 @@ public:
+       auto end1 = std::chrono::system_clock::now();
+       std::chrono::duration<double> elapsedSeconds1 = end1 - start;
+       RCLCPP_INFO(logger_, "[%s] reqParamTOC: %f s (%d params)", name_.c_str(), elapsedSeconds1.count(), numParams);
+-      
+-      // Set parameters as specified in the configuration files, as in the following order
+-      // 1.) check all/firmware_params
+-      // 2.) check robot_types/<type_name>/firmware_params
+-      // 3.) check robots/<robot_name>/firmware_params
+-      // where the higher order is used if defined on multiple levels.
+-
+-      // <group>.<name> -> value map
+-      std::map<std::string, rclcpp::ParameterValue> set_param_map;
+-
+-      // check global settings/firmware_params
+-      update_map(set_param_map, "all.firmware_params");
+-      // check robot_types/<type_name>/firmware_params
+-      update_map(set_param_map, "robot_types." + cf_type + ".firmware_params");
+-      // check robots/<robot_name>/firmware_params
+-      update_map(set_param_map, "robots." + name_ + ".firmware_params");
+-
+-      // Update parameters
+-      for (const auto&i : set_param_map) {
+-        std::string paramName = name + ".params." + std::regex_replace(i.first, std::regex("\\."), ".");
+-        change_parameter(rclcpp::Parameter(paramName, i.second));
+-      }
++      RCLCPP_INFO(logger_, "[%s] SAFE_REDCHO_READBACK_PASS: %zu configured parameters verified", name_.c_str(), set_param_map.size());
+     }
+ 
+     // Reference Frame
+@@ -1312,8 +1367,17 @@ public:
+     // support for all.params
+ 
+     // Create a parameter subscriber that can be used to monitor parameter changes
+-    param_subscriber_ = std::make_shared<rclcpp::ParameterEventHandler>(this);
+-    cb_handle_ = param_subscriber_->add_parameter_event_callback(std::bind(&CrazyflieServer::on_parameter_event, this, _1));
++    firmware_param_callback_ = this->add_post_set_parameters_callback(
++     [this](const std::vector<rclcpp::Parameter>& parameters)
++     {
++     rcl_interfaces::msg::ParameterEvent event;
++     event.node = this->get_fully_qualified_name();
++
++     for (const auto& parameter : parameters) {
++      event.changed_parameters.push_back(parameter.to_parameter_msg());}
++
++     this->on_parameter_event(event);
++       }); 
+ 
+     // topics for "all"
+     subscription_cmd_full_state_ = this->create_subscription<crazyflie_interfaces::msg::FullState>("all/cmd_full_state", rclcpp::SystemDefaultsQoS(), std::bind(&CrazyflieServer::cmd_full_state_changed, this, _1), sub_opt_all_cmd);
+@@ -1525,8 +1589,8 @@ private:
+ 
+   void on_parameter_event(const rcl_interfaces::msg::ParameterEvent &event)
+   {
+-    if (event.node == "/crazyflie_server") {
+-      auto params = param_subscriber_->get_parameters_from_event(event);
++    if (event.node == this->get_fully_qualified_name()) {
++      auto params =rclcpp::ParameterEventHandler::get_parameters_from_event(event);
+       for (auto &p : params) {
+         size_t params_pos = p.get_name().find(".params.");
+         if (params_pos == std::string::npos) {
+@@ -1705,8 +1769,8 @@ private:
+     int broadcasts_delay_between_repeats_ms_;
+ 
+     // parameter updates
+-    std::shared_ptr<rclcpp::ParameterEventHandler> param_subscriber_;
+-    std::shared_ptr<rclcpp::ParameterEventCallbackHandle> cb_handle_;
++    rclcpp::node_interfaces::PostSetParametersCallbackHandle::SharedPtr
++      firmware_param_callback_;
+ 
+     // sanity checks
+     rclcpp::TimerBase::SharedPtr watchdog_timer_;

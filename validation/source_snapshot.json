@@ -1,0 +1,30 @@
+{
+  "edition": "commissioning",
+  "date": "2026-10-31",
+  "source_files_sha256": {
+    "src/safe_redcho_bringup/setup.cfg": "918da771061a5063400e0e3d5af2b39ca75274b19bbf72645bc922678e6b7709",
+    "src/safe_redcho_bringup/package.xml": "5e06c68ef6831a8ce7249adac1ad82480c6453062a94e5d6a1e3ee7b27019fbc",
+    "src/safe_redcho_bringup/setup.py": "e54b56a0a1aeba8fceb0435d092e8793ade0bd7a7738c5c9c006e11e8b76c938",
+    "src/safe_redcho_bringup/resource/safe_redcho_bringup": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/safe_redcho_bringup/launch/mocap.launch.py": "0e47cda2fd62918222799e5c4a4e608500675031762d8ef8b4efeff5c476d403",
+    "src/safe_redcho_bringup/launch/single_cf.launch.py": "0dba2206b9713a50bda7c309d83c1605071abb48fbfe96de5715112af6e143f8",
+    "src/safe_redcho_bringup/launch/six_cf.launch.py": "9f28b3ccebff8ca89c86f93d24fbd8c18189806d0bace8177de44ae87def50ce",
+    "src/safe_redcho_bringup/safe_redcho_bringup/configuration.py": "b1f93d2ac7bf31d246a9c8068aef611abb9619692e5c53b52bae6925df32bcd1",
+    "src/safe_redcho_bringup/safe_redcho_bringup/pose_check.py": "548e8bda6dca4ac90b7909f95d13b04f69310c437d1722785c44333af55ec2ce",
+    "src/safe_redcho_bringup/safe_redcho_bringup/fleet_mission.py": "b7153b7d0d9dfa53b2bf9e768b8b08714208baf9d966476594908393d37329b9",
+    "src/safe_redcho_bringup/safe_redcho_bringup/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/safe_redcho_bringup/safe_redcho_bringup/firmware_preflight.py.~1~": "8f656075e23b7562b2850ed64e97a4df3c3a2f856a79c35313948cb39e8f97b2",
+    "src/safe_redcho_bringup/safe_redcho_bringup/hardware_settling.py": "7717b6244d889e3b56a2863e31eefc2e13c9b4238283311cf8f486e6e40b8985",
+    "src/safe_redcho_bringup/safe_redcho_bringup/single_hover.py": "1303396db01bc804e81fad029755b42b55c76493651daac4f5732b0956b68dbe",
+    "src/safe_redcho_bringup/safe_redcho_bringup/onboard_avoidance.py": "8c4490d33f3131822d80763c44c18bf0ad5f34d224a31b50b0a90cd128b5e5dc",
+    "src/safe_redcho_bringup/safe_redcho_bringup/swap_planner.py": "e6af3d05062adda8b08d512528822ebb585b12d921843ee7503b3246c4432a0c",
+    "src/safe_redcho_bringup/safe_redcho_bringup/receiver.py": "2ad3ecaad35e3656338e6dc5cbdc58c593f43c7c2615e8be0ab3cca7955be706",
+    "src/safe_redcho_bringup/safe_redcho_bringup/pose_metrics.py": "f621d5c0cbe09d026da87fb604cac3e0424b43b5eb7f4f0d3a00c331e680de0d",
+    "src/safe_redcho_bringup/safe_redcho_bringup/fleet_receiver.py": "b7be42412ec349c712af4cd62d26f030cbc6c70763cb351156c9dfaf8083b9f4",
+    "src/safe_redcho_bringup/safe_redcho_bringup/firmware_preflight.py": "33f435848ec739360f24284e4381d429a81230ec8ddb89aae4d0929faac71370",
+    "src/safe_redcho_bringup/safe_redcho_bringup/firmware_preflight.py.~2~": "33f435848ec739360f24284e4381d429a81230ec8ddb89aae4d0929faac71370",
+    "src/safe_redcho_bringup/safe_redcho_bringup/backend_audit.py": "a5c2d77b2ea6e992cebc40ffa18f3386061b88c02d1b9248ad2b1dac9a094bf0",
+    "src/safe_redcho_bringup/safe_redcho_bringup/fleet_configuration.py": "f17b4112912ac11fa2b4e190009af4c3570953af060cf2e5dcd45347fc4638cd",
+    "src/safe_redcho_bringup/safe_redcho_bringup/fleet_capture.py": "58dfb70b95759dce65041dd5e11ccd56897204958d269e5b27c324bfce8106be"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "edition": "commissioning",
+  "checks": [
+    {
+      "command": [
+        "scripts/verify.py"
+      ],
+      "exit_code": 0,
+      "log": "00.log"
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "01.log"
+    },
+    {
+      "command": [
+        "scripts/run.py",
+        "offline",
+        "--output",
+        "$CHECKOUT/results/tests_20261031T193234_890801Z/offline_default"
+      ],
+      "exit_code": 0,
+      "log": "02.log"
+    }
+  ],
+  "scope": "Software, test-double and numerical checks only; no radio, live motion capture or aircraft commands"
+}

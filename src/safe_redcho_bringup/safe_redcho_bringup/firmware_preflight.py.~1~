@@ -1,0 +1,162 @@
+"""Read-only, per-parameter verification of the Crazyswarm2 ROS cache.
+
+ROS cache contents are not fresh radio readback or evidence of peer freshness.
+Unknown, uninitialized, nonfinite and mismatched values remain failures.
+"""
+import math
+import time
+
+from .onboard_avoidance import firmware_parameters
+
+
+def expected_parameters(config, names):
+    expected = {}
+    for name in names:
+        expected[f'{name}.params.stabilizer.controller'] = 1
+        expected.update({f'{name}.params.colAv.{key}': value
+                         for key, value in firmware_parameters(config).items()})
+    return expected
+
+
+def numeric_value(value):
+    if value.type == 2:
+        return int(value.integer_value)
+    if value.type == 3:
+        result = float(value.double_value)
+        if math.isfinite(result):
+            return result
+    return None
+
+
+def verify_parameter_cache(node, config, names, report, *,
+                           get_type=None, list_type=None, spin=None, clock=None):
+    if get_type is None or list_type is None:
+        from rcl_interfaces.srv import GetParameters, ListParameters
+        get_type, list_type = GetParameters, ListParameters
+    if spin is None:
+        import rclpy
+        spin = rclpy.spin_once
+    clock = clock or time.monotonic
+    expected = expected_parameters(config, names)
+    report.update({
+        'status': 'CHECKING',
+        'scope': 'ROS server parameter cache only; not fresh RF readback',
+        'expected_count': len(expected), 'matched_count': 0,
+        'parameters': {}, 'missing_declarations': [], 'failures': [],
+    })
+    clients = []
+    pending = {}
+
+    def wait(future, label, timeout=5.):
+        deadline = clock()+timeout
+        while not future.done() and clock() < deadline:
+            spin(node, timeout_sec=.02)
+        if not future.done():
+            future.cancel()
+            raise RuntimeError(f'{label} timed out')
+        response = future.result()
+        if response is None:
+            raise RuntimeError(f'{label} returned no response')
+        return response
+
+    try:
+        for service_type, endpoint in (
+                (list_type, '/crazyflie_server/list_parameters'),
+                (get_type, '/crazyflie_server/get_parameters')):
+            client = node.create_client(service_type, endpoint)
+            clients.append(client)
+            if not client.wait_for_service(timeout_sec=3.):
+                raise RuntimeError(f'Parameter service unavailable: {endpoint}')
+        list_client, get_client = clients
+        request = list_type.Request()
+        request.prefixes = [f'{name}.params' for name in names]
+        request.depth = 0  # DEPTH_RECURSIVE
+        response = wait(list_client.call_async(request), 'Firmware parameter listing')
+        declared = set(response.result.names)
+        report['declared_required_count'] = len(set(expected) & declared)
+        report['missing_declarations'] = sorted(set(expected)-declared)
+        # Single-name reads preserve attribution: one uninitialized parameter
+        # cannot erase evidence for the other parameters in a bulk response.
+        for name in expected:
+            if name not in declared:
+                report['parameters'][name] = {
+                    'expected': expected[name], 'status': 'MISSING_DECLARATION'}
+                continue
+            request = get_type.Request()
+            request.names = [name]
+            try:
+                pending[name] = get_client.call_async(request)
+            except Exception as exc:
+                report['parameters'][name] = {
+                    'expected': expected[name], 'status': 'QUERY_ERROR',
+                    'detail': str(exc)}
+        deadline = clock()+8.
+        while pending and clock() < deadline:
+            spin(node, timeout_sec=.02)
+            for name, future in list(pending.items()):
+                if not future.done():
+                    continue
+                result = {'expected': expected[name]}
+                try:
+                    response = future.result()
+                    if response is None or len(response.values) != 1:
+                        result.update(status='NO_SINGLE_VALUE', detail=(
+                            'Declared parameter has no readable value; it may be uninitialized'))
+                    else:
+                        value = response.values[0]
+                        actual = numeric_value(value)
+                        result['ros_type'] = int(value.type)
+                        result['actual'] = actual
+                        if actual is None:
+                            result['status'] = 'UNSET_OR_INVALID_TYPE'
+                        elif abs(actual-expected[name]) > 1e-5:
+                            result['status'] = 'VALUE_MISMATCH'
+                        else:
+                            result['status'] = 'MATCH'
+                            report['matched_count'] += 1
+                except Exception as exc:
+                    result.update(status='QUERY_ERROR', detail=str(exc))
+                report['parameters'][name] = result
+                del pending[name]
+        for name in pending:
+            report['parameters'][name] = {'expected': expected[name], 'status': 'QUERY_TIMEOUT'}
+        failed = [name for name in expected
+                  if report['parameters'][name]['status'] != 'MATCH']
+        report['failures'] = failed
+        if failed:
+            examples = ', '.join(f'{key}: {report["parameters"][key]["status"]}'
+                                 for key in failed[:6])
+            raise RuntimeError(
+                f'PID/BVCA parameter verification failed for {len(failed)}/{len(expected)} values. '
+                f'{examples}. Inspect parameter_preflight.json for every actual/expected value. '
+                'Missing declarations require checking firmware support/parameter enablement; '
+                'uninitialized values require the updated launch and a backend restart. '
+                'No values were set by this checker.')
+        report['status'] = 'PASS_ROS_CACHE'
+    except Exception as exc:
+        report['status'] = 'FAIL'
+        report['error'] = str(exc)
+        raise
+    finally:
+        for future in pending.values():
+            if not future.done():
+                future.cancel()
+        for client in clients:
+            node.destroy_client(client)
+
+
+def verify_avoidance(self):
+    """Replacement FleetMission method; all checks run before arming."""
+    from .backend_audit import audit_workspace
+    self.avoidance_configuration['routing'] = audit_workspace(self.config)
+    record = {}
+    self.avoidance_configuration['parameter_check'] = record
+    try:
+        verify_parameter_cache(self, self.config, self.names, record)
+    finally:
+        import json
+        destination = self.output/'parameter_preflight.json'
+        destination.write_text(json.dumps(record, indent=2, allow_nan=False)+'\n')
+        self.get_logger().info(f'Parameter diagnostics: {destination}')
+    self.avoidance_configuration['ros_parameter_cache_matches'] = True
+    self.avoidance_configuration['fresh_onboard_peer_tables_verified'] = False

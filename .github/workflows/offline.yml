@@ -1,0 +1,24 @@
+name: Offline configuration and controller tests
+on:
+  push:
+    branches: [main, commissioning, flight, three]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install offline dependencies
+        run: sudo apt-get update && sudo apt-get install -y python3-numpy python3-scipy python3-yaml python3-matplotlib python3-pyqt5 python3-pyqtgraph
+      - name: Verify and test without hardware
+        run: bash scripts/test.sh
+      - name: Save evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-results
+          path: results/tests_*/

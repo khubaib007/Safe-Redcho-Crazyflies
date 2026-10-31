@@ -1,0 +1,9 @@
+{
+  "edition": "commissioning",
+  "title": "Safe REDCHO Hardware Bringup",
+  "version": "0.1.0",
+  "tag": "commissioning-v0.1.0",
+  "packages": [
+    "safe_redcho_bringup"
+  ]
+}

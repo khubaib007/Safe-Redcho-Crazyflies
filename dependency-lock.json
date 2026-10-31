@@ -1,0 +1,111 @@
+{
+  "repositories": [
+    {
+      "repository": "crazyswarm2",
+      "relative_path": ".",
+      "commit": "f1e09954f56cd08e7d9aff5e13dc9a68795914a3",
+      "url": "https://github.com/IMRCLab/crazyswarm2.git",
+      "patch": "crazyswarm2__root.patch",
+      "patch_sha256": "c7086495ead2359139497ec1198827fcd357513d1efad6a929cb30894efaf3ff",
+      "patched_files_sha256": {
+        "crazyflie_server_cpp/src/crazyflie_server.cpp": "05e5ba79aa2d157fc25fac66f42055dda85ac5ad0c130ecca9d67c609723f23d"
+      }
+    },
+    {
+      "repository": "crazyswarm2",
+      "relative_path": "crazyflie_server_cpp/deps/crazyflie_tools",
+      "commit": "91cd6304e374be554ce463db4ba57f816e7c59f3",
+      "url": null
+    },
+    {
+      "repository": "crazyswarm2",
+      "relative_path": "crazyflie_server_cpp/deps/crazyflie_tools/crazyflie_cpp",
+      "commit": "72996dc8080af4efcace3d65810a0a42ccac9541",
+      "url": null,
+      "patch": "crazyswarm2__crazyflie_server_cpp_deps_crazyflie_tools_crazyflie_cpp.patch",
+      "patch_sha256": "581c67ed72603713196195f2149f2827cbd8133c131f02d2403c7d726967e534",
+      "patched_files_sha256": {
+        "include/crazyflie_cpp/crtp.h": "f3f85e8507cf9f93432f7e2c3438a26d58d83a1c7d70ab6d9cfeaa70b22f302c",
+        "src/Crazyflie.cpp": "642ccbbed51b8a27a5094fc1e575bf8742bd474b456ceffb98001bca589f0aeb"
+      }
+    },
+    {
+      "repository": "crazyswarm2",
+      "relative_path": "crazyflie_server_cpp/deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp",
+      "commit": "fc2881c464e812c6720cb10cc77914a5689f0d67",
+      "url": null
+    },
+    {
+      "repository": "crazyswarm2",
+      "relative_path": "crazyflie_server_cpp/deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/libusb",
+      "commit": "683e3cf21ed37d4492c20cea8de810c4d95ae8b6",
+      "url": null
+    },
+    {
+      "repository": "crazyswarm2",
+      "relative_path": "crazyflie_server_cpp/deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/pybind11",
+      "commit": "5b0a6fc2017fcc176545afe3e09c9f9885283242",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": ".",
+      "commit": "64d3af2456e534cd5e587b98ef2f15dd8ad35e8c",
+      "url": "https://github.com/IMRCLab/motion_capture_tracking.git"
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture",
+      "commit": "24321e4c1c923a1bc5d6cecdaa7834f11b79d8f2",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/NatNetSDKCrossplatform",
+      "commit": "0a9b1e532d5d168e3b3569e97670c73181b2577c",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/pybind11",
+      "commit": "ee2b5226295d67b690faddd446a329bb2840a1a8",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/qualisys_cpp_sdk",
+      "commit": "45c9b50101dc7422b921f60cd68f3fb5b60de7cb",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/vicon-datastream-sdk",
+      "commit": "a5096f283f484acca98b434c08810cd922551701",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/vrpn",
+      "commit": "066812ba7f637c0f6e3672a4550620e5a20ca688",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/vrpn/submodules/hidapi",
+      "commit": "8b26e4962175a82205ebc499fdc2682e581e5fbe",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/libmotioncapture/deps/vrpn/submodules/jsoncpp",
+      "commit": "00b0a1b99216a3d220a25a78a496e7d0b0c4251c",
+      "url": null
+    },
+    {
+      "repository": "motion_capture_tracking",
+      "relative_path": "motion_capture_tracking/deps/librigidbodytracker",
+      "commit": "020e541b6825595c841f1103bf86e42914d08c9f",
+      "url": null
+    }
+  ]
+}

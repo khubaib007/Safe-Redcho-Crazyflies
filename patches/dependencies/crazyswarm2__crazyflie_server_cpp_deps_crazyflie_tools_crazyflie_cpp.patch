@@ -1,0 +1,126 @@
+diff --git a/include/crazyflie_cpp/crtp.h b/include/crazyflie_cpp/crtp.h
+index d5a44d7..e59640d 100644
+--- a/include/crazyflie_cpp/crtp.h
++++ b/include/crazyflie_cpp/crtp.h
+@@ -266,11 +266,13 @@ public:
+ 
+ struct crtpMemoryGetInfoResponse
+ {
+-  static bool valid(const bitcraze::crazyflieLinkCpp::Packet &p)
++   static bool valid(
++      const bitcraze::crazyflieLinkCpp::Packet &p)
+   {
+     return p.port() == 4 &&
+            p.channel() == 0 &&
+-           p.payloadSize() == 15 &&
++           (p.payloadSize() == 15 ||
++            p.payloadSize() == 19) &&
+            p.payloadAt<uint8_t>(0) == 2;
+   }
+ 
+@@ -1051,4 +1053,4 @@ struct crtpPlatformRSSIAck
+     uint8_t rssi;
+ };
+ CHECKSIZE_RESPONSE(crtpPlatformRSSIAck)
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/Crazyflie.cpp b/src/Crazyflie.cpp
+index 1a4313f..83eee92 100644
+--- a/src/Crazyflie.cpp
++++ b/src/Crazyflie.cpp
+@@ -868,47 +868,55 @@ void Crazyflie::requestParamValues()
+ 
+ void Crazyflie::requestMemoryToc()
+ {
+-  // Find the number of memories
+-  crtpMemoryGetNumberRequest req;
+-  m_connection.send(req);
+-  using res = crtpMemoryGetNumberResponse;
+-  auto p = waitForResponse(&res::valid);
+-  uint8_t numberOfMemories = res::numberOfMemories(p);
++  m_memoryTocEntries.clear();
+ 
+-  m_logger.info("Memories: " + std::to_string(numberOfMemories));
++  crtpMemoryGetNumberRequest countRequest;
++  m_connection.send(countRequest);
+ 
+-  // Request detailed information
+-  m_memoryTocEntries.resize(numberOfMemories);
++  using CountResponse = crtpMemoryGetNumberResponse;
++  auto countPacket = waitForResponse(&CountResponse::valid);
++  const uint8_t numberOfMemories =
++    CountResponse::numberOfMemories(countPacket);
+ 
+-  for (uint8_t i = 0; i < numberOfMemories; ++i) {
+-    crtpMemoryGetInfoRequest req(i);
+-    m_connection.send(req);
++  m_logger.info(
++    "Memories: " + std::to_string(numberOfMemories));
+ 
+-#ifndef FIRMWARE_BUGGY
+-  }
++  std::vector<MemoryTocEntry> entries(numberOfMemories);
+ 
+-  // Update internal structure with obtained data
+-  for (uint8_t i = 0; i < numberOfMemories; ++i) {
+-#endif
+-    using res = crtpMemoryGetInfoResponse;
+-    auto p = waitForResponse(&res::valid);
++  for (uint16_t index = 0; index < numberOfMemories; ++index) {
++    const uint8_t id = static_cast<uint8_t>(index);
+ 
+-    MemoryTocEntry& entry = m_memoryTocEntries[i];
+-    entry.id = i;
+-    entry.type = (MemoryType)res::type(p);
+-    entry.size = res::size(p);
+-    entry.addr = res::addr(p);
++    m_logger.info(
++      "Requesting memory entry " + std::to_string(index) +
++      "/" + std::to_string(numberOfMemories));
+ 
+-#ifdef FIRMWARE_BUGGY
+-    if (res::id(p) != i)
+-    {
+-      m_logger.warning("Firmware bug! expected " + std::to_string(i) + " got " + std::to_string(res::id(p)));
+-      --i; // try again...
++    crtpMemoryGetInfoRequest request(id);
++    m_connection.send(request);
++
++    using InfoResponse = crtpMemoryGetInfoResponse;
++    auto packet = waitForResponse(&InfoResponse::valid);
++
++    if (InfoResponse::id(packet) != id) {
++      throw std::runtime_error(
++        "Memory discovery ID mismatch for entry " +
++        std::to_string(id));
+     }
+-#else
+-    assert(res::id(p) == i);
+-#endif
++
++    MemoryTocEntry& entry = entries[index];
++    entry.id = id;
++    entry.type =
++      static_cast<MemoryType>(InfoResponse::type(packet));
++    entry.size = InfoResponse::size(packet);
++    entry.addr = InfoResponse::addr(packet);
++
++    m_logger.info(
++      "Received memory entry " + std::to_string(index) +
++      ", payload=" + std::to_string(packet.payloadSize()) +
++      " bytes");
+   }
++
++  m_memoryTocEntries.swap(entries);
++  m_logger.info("Memory discovery complete");
+ }
+ 
+ void Crazyflie::setParam(uint16_t id, const ParamValue &value)
+@@ -1337,4 +1345,4 @@ void CrazyflieBroadcaster::sendFullStateSetpoint(
+       qx, qy, qz, qw,
+       rollRate, pitchRate, yawRate);
+   m_connection.send(req);
+-}
+\ No newline at end of file
++}

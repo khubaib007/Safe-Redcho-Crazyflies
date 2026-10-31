@@ -1,0 +1,37 @@
+network:
+  motive_ip: 192.168.2.5
+  ubuntu_ip: 192.168.2.25
+  multicast_group: 239.255.42.99
+  command_port: 1510
+  data_port: 1511
+mocap:
+  backend: optitrack
+  frame_id: world
+  expected_rate_hz: 120.0
+robot:
+  name: cf1
+  rigid_body_name: cf1
+  uri: REPLACE_WITH_ACTUAL_URI
+  initial_position:
+  - 0.0
+  - 0.0
+  - 0.03
+  controller: 2
+  estimator: 2
+  pose_log_rate_hz: 50
+flight:
+  height_above_start_m: 0.5
+  takeoff_duration_s: 3.0
+  hover_duration_s: 5.0
+  landing_duration_s: 3.0
+  landing_offset_m: 0.015
+  minimum_mocap_rate_hz: 50.0
+  maximum_receive_gap_s: 0.08
+  maximum_estimator_age_s: 0.15
+  maximum_estimator_position_error_m: 0.1
+  maximum_estimator_attitude_error_rad: 0.26
+  maximum_initial_position_error_m: 0.15
+  maximum_initial_tilt_rad: 0.2
+  maximum_horizontal_excursion_m: 0.25
+  maximum_height_overshoot_m: 0.25
+  maximum_hover_height_error_m: 0.15

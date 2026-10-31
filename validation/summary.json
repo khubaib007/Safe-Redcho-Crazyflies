@@ -1,0 +1,15 @@
+{
+  "status": "PASS_SOFTWARE_ONLY",
+  "edition": "commissioning",
+  "unit_adapter_gui_tests_run": 47,
+  "skipped_tests": 0,
+  "offline_cases": [
+    "offline_default"
+  ],
+  "pinned_backend_packages_built": 6,
+  "edition_packages_built": 1,
+  "actual_ros_interface_imports": "PASS_NO_NODE_INITIALIZATION",
+  "dependency_patch_application": "PASS_FROM_CLEAN_LOCAL_GIT_CLONES",
+  "live_radio_mocap_firmware_flight": "NOT_RUN",
+  "note": "Unit counts include the two relocation/config checks run separately. Original bundle installer tests skip because that legacy distribution installer is not used by this release."
+}
