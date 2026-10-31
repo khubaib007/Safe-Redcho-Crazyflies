@@ -1,4 +1,4 @@
-# Configuration: three-v0.1.0
+# Configuration: mission-v0.1.0
 
 Initialize editable files once:
 
@@ -38,7 +38,7 @@ file. Changing configured initial_position does not move the physical aircraft.
 
 ## Edition's profile
 
-Use `config/local/redcho_three.yaml`; only cf2/cf3/cf4 are active. The fleet inventory still contains six entries for URI validation, while the backend is restricted to the active three. The handover geometry is checked before arming.
+Use `config/local/three_mission.yaml` for the default mission, or choose combined/obstacle/interagent consistently in every terminal. Source profiles and immutable surveyed runtime profiles are distinct. Survey detects obstacle center/pivot and aircraft starts; radius and complete footprint remain user measurements. Changing a source profile invalidates its survey.
 
 Do not edit generated backend configurations. They are overwritten. Do not mix
 nodes from different editions or overlays. Domain 43 separates the documented

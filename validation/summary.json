@@ -1,13 +1,16 @@
 {
   "status": "PASS_SOFTWARE_ONLY",
-  "edition": "three",
-  "unit_adapter_gui_tests_run": 107,
-  "skipped_tests": 0,
+  "edition": "mission",
+  "unit_adapter_gui_tests_run": 180,
+  "skipped_tests": 2,
   "offline_cases": [
-    "offline_default"
+    "offline_interagent",
+    "offline_combined",
+    "offline_default",
+    "offline_obstacle"
   ],
   "pinned_backend_packages_built": 6,
-  "edition_packages_built": 6,
+  "edition_packages_built": 2,
   "actual_ros_interface_imports": "PASS_NO_NODE_INITIALIZATION",
   "dependency_patch_application": "PASS_FROM_CLEAN_LOCAL_GIT_CLONES",
   "live_radio_mocap_firmware_flight": "NOT_RUN",

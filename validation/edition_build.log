@@ -1,14 +1,6 @@
 Starting >>> safe_redcho_bringup
-Finished <<< safe_redcho_bringup [1.21s]
-Starting >>> safe_redcho_telemetry
-Finished <<< safe_redcho_telemetry [1.21s]
-Starting >>> safe_redcho_three_liveplots
-Finished <<< safe_redcho_three_liveplots [1.21s]
-Starting >>> safe_redcho_three_telemetry
-Finished <<< safe_redcho_three_telemetry [1.19s]
-Starting >>> safe_redcho_flight
-Finished <<< safe_redcho_flight [1.21s]
-Starting >>> safe_redcho_three
-Finished <<< safe_redcho_three [1.25s]
+Finished <<< safe_redcho_bringup [1.19s]
+Starting >>> safe_redcho_three_mission
+Finished <<< safe_redcho_three_mission [1.20s]
 
-Summary: 6 packages finished [7.40s]
+Summary: 2 packages finished [2.49s]

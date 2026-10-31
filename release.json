@@ -1,14 +1,10 @@
 {
-  "edition": "three",
-  "title": "Safe REDCHO Three-Aircraft Position Control",
+  "edition": "mission",
+  "title": "Safe REDCHO Formation Acquisition",
   "version": "0.1.0",
-  "tag": "three-v0.1.0",
+  "tag": "mission-v0.1.0",
   "packages": [
     "safe_redcho_bringup",
-    "safe_redcho_flight",
-    "safe_redcho_telemetry",
-    "safe_redcho_three",
-    "safe_redcho_three_telemetry",
-    "safe_redcho_three_liveplots"
+    "safe_redcho_three_mission"
   ]
 }

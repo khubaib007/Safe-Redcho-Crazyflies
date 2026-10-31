@@ -1,6 +1,6 @@
 # Architecture
 
-Three-aircraft dual-REDCHO/HOCBF-QP position control with a prechecked slow handover.
+Three-aircraft formation acquisition, height/yaw alignment, translation and surveyed obstacle experiments.
 
 Motive → NatNet → motion_capture_tracking → `/poses` → Crazyswarm2 C++ server
 → Crazyradio → onboard estimator/controller. Pose/status returns to the host.
@@ -30,7 +30,7 @@ allowances. Physical tracking is monitored separately. A safe virtual reference
 does not establish arbitrary disturbed-aircraft safety. These hardware stacks
 do not compute or send the four motor forces used in the simulation repository.
 
-This edition sends position/yaw only. Velocity/acceleration remain computed reference quantities, not fields transmitted in Position messages. A geometrically checked slow bridge brings the planned takeoff hover to existing slots before REDCHO ALIGN begins; that bridge itself does not run the REDCHO/QP controller.
+This edition sends position/yaw only and adds WARMUP → HEIGHT → YAW → FORMATION → SETTLE → FORWARD → STOP. Shape transitions are per-aircraft; shared translation and absolute center/height proposals are observed separately. Static XY-cylinder obstacles use surveyed immutable centers with live movement/tilt/age guards. No vertical obstacle bypass is modeled.
 
 Diagnostics preserve source/receipt clocks and algorithm session/sequence where
 available. Position messages do not encode algorithm sequence or onboard receipt.

@@ -1,0 +1,7 @@
+from glob import glob
+from setuptools import setup,find_packages
+name='safe_redcho_three_mission'
+setup(name=name,version='0.1.0',packages=find_packages(),data_files=[('share/ament_index/resource_index/packages',['resource/'+name]),('share/'+name,['package.xml']),('share/'+name+'/config',glob('config/*.yaml')),('share/'+name+'/launch',glob('launch/*.launch.py'))],install_requires=['setuptools','numpy','scipy','PyYAML'],zip_safe=True,maintainer='Khubaib Ahmad',maintainer_email='maintainer@example.invalid',description='Isolated dual REDCHO height, yaw and formation acquisition mission',license='MIT',entry_points={'console_scripts':[
+'mission_doctor = safe_redcho_three_mission.doctor:main','mission_capture = safe_redcho_three_mission.capture:main','mission_agent = safe_redcho_three_mission.agent:main','mission_coordinator = safe_redcho_three_mission.mission:main','mission_watchdog = safe_redcho_three_mission.watchdog:main','mission_preview = safe_redcho_three_mission.preview:main',
+*[(g+'_telemetry = safe_redcho_three_mission.telemetry.'+('flight_recorder' if g=='flight' else 'reference_recorder' if g=='reference' else 'redcho_recorder' if g=='redcho' else 'control_recorder')+':main') for g in ('flight','reference','redcho','control')],
+'live_capture = safe_redcho_three_mission.liveplots.capture:main',*[(g+'_plot = safe_redcho_three_mission.liveplots.gui:'+g) for g in ('flight','battery','timing','reference','velocity_redcho','position_redcho','control','hocbf')]]})

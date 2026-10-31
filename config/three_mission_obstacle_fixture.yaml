@@ -1,0 +1,34 @@
+captured_utc: '2026-10-28T18:42:41.924656+00:00'
+frame_id: world
+positions:
+  cf2:
+  - 0.22547979652881622
+  - 0.8467070460319519
+  - 0.030294174328446388
+  cf3:
+  - -0.06769794225692749
+  - -0.020379025489091873
+  - 0.03000178001821041
+  cf4:
+  - 0.07696036249399185
+  - -0.79561448097229
+  - 0.0274637583643198
+yaw_rad:
+  cf2: -0.10729735732087818
+  cf3: 0.7074210520113439
+  cf4: 0.0923691415735833
+capture_config_hash: eeef4d10e044127e2fab0aa6053b4c16f388652882ab4264a0eb9548c0a9baf7
+planned_assignment:
+  cf2:
+  - 0.0
+  - 0.95
+  - 0.0
+  cf3:
+  - 0.0
+  - 0.0
+  - 0.0
+  cf4:
+  - 0.0
+  - -0.95
+  - 0.0
+scope: Numerical fixture copied from uploaded capture; not a new live measurement

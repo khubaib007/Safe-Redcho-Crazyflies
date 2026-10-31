@@ -1,0 +1,1 @@
+PASS: actual pinned template generation, local-config paths and source routing audit; synthetic files only, no ROS initialization/radio commands

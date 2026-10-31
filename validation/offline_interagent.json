@@ -1,0 +1,275 @@
+{
+  "status": "PASS",
+  "scope": "Numerical dual REDCHO/QP and synthetic tracking; no ROS/radio/hardware",
+  "duration_s": 47.560000000001835,
+  "wall_s": 5.496401172997139,
+  "cycles": 2378,
+  "maximum_synthetic_tracking_error_m": 0.020063825811905855,
+  "maximum_synthetic_speed_mps": 0.20063825811905855,
+  "minimum_synthetic_xy_separation_m": 0.7214048095442809,
+  "minimum_virtual_xy_separation_m": 0.7221751572511794,
+  "required_reference_xy_separation_m": 0.718,
+  "final_endpoint_errors_m": [
+    0.00010947477055691145,
+    0.0001360735608236719,
+    0.0001356786800376552
+  ],
+  "final_height_spread_m": 0.0001637659163720162,
+  "stage_events": [
+    [
+      0.0,
+      "WARMUP"
+    ],
+    [
+      4.479999999999992,
+      "HEIGHT"
+    ],
+    [
+      8.519999999999907,
+      "YAW"
+    ],
+    [
+      15.519999999999758,
+      "FORMATION"
+    ],
+    [
+      30.539999999999438,
+      "SETTLE"
+    ],
+    [
+      32.53999999999949,
+      "FORWARD"
+    ],
+    [
+      42.54000000000105,
+      "STOP"
+    ]
+  ],
+  "obstacle_models": [],
+  "obstacle_clearances": {},
+  "hocbf_evidence": {
+    "cf2/pair_cf3": {
+      "samples": 2378,
+      "binding_samples": 208,
+      "nominal_unsafe_samples": 208,
+      "bounded_free_unsafe_samples": 208,
+      "minimum_filtered_residual": -6.591949208711867e-17,
+      "minimum_h": 0.006012957750765824,
+      "minimum_psi1": 0.024017894274533602
+    },
+    "cf2/pair_cf4": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 4.467945030365703,
+      "minimum_h": 1.6796612203244918,
+      "minimum_psi1": 6.708504481850919
+    },
+    "cf2/upper_0": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 1.4239732807441599,
+      "minimum_h": 0.09110114882922726,
+      "minimum_psi1": 0.3643126332422777
+    },
+    "cf2/lower_0": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 7.022999107287307,
+      "minimum_h": 0.4409999945026306,
+      "minimum_psi1": 1.7639999286489183
+    },
+    "cf2/upper_1": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 3.0229997430264137,
+      "minimum_h": 0.19099998427880527,
+      "minimum_psi1": 0.7639999363488529
+    },
+    "cf2/lower_1": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 18.223,
+      "minimum_h": 1.141,
+      "minimum_psi1": 4.564
+    },
+    "cf2/upper_2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 5.746199999999991,
+      "minimum_h": 0.36119999999999997,
+      "minimum_psi1": 1.444799999999999
+    },
+    "cf2/lower_2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 4.766999999999998,
+      "minimum_h": 0.3000000000000001,
+      "minimum_psi1": 1.2000000000000002
+    },
+    "cf3/pair_cf2": {
+      "samples": 2378,
+      "binding_samples": 246,
+      "nominal_unsafe_samples": 246,
+      "bounded_free_unsafe_samples": 246,
+      "minimum_filtered_residual": -8.326672684688674e-17,
+      "minimum_h": 0.006012957750765824,
+      "minimum_psi1": 0.024017894274533602
+    },
+    "cf3/pair_cf4": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 1.596382933514294,
+      "minimum_h": 0.38697911455458356,
+      "minimum_psi1": 1.547916457975701
+    },
+    "cf3/upper_0": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 1.423960532309023,
+      "minimum_h": 0.091100350637628,
+      "minimum_psi1": 0.36430944366751117
+    },
+    "cf3/lower_0": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 19.823,
+      "minimum_h": 1.241,
+      "minimum_psi1": 4.964
+    },
+    "cf3/upper_1": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 5.422998929255385,
+      "minimum_h": 0.3409999926559599,
+      "minimum_psi1": 1.3639999113552836
+    },
+    "cf3/lower_1": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 18.223012982455206,
+      "minimum_h": 1.1410008114941574,
+      "minimum_psi1": 4.564003245772015
+    },
+    "cf3/upper_2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 5.7475101273309495,
+      "minimum_h": 0.36128188295818553,
+      "minimum_psi1": 1.4451275318327395
+    },
+    "cf3/lower_2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 2.3670000000000004,
+      "minimum_h": 0.15000000000000002,
+      "minimum_psi1": 0.6000000000000001
+    },
+    "cf4/pair_cf2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 4.4673856984802365,
+      "minimum_h": 1.6796612203244918,
+      "minimum_psi1": 6.708504481850919
+    },
+    "cf4/pair_cf3": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 1.5963829335212174,
+      "minimum_h": 0.38697911455458356,
+      "minimum_psi1": 1.547916457975701
+    },
+    "cf4/upper_0": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 1.4239526003761391,
+      "minimum_h": 0.09109985554385824,
+      "minimum_psi1": 0.36430746182102136
+    },
+    "cf4/lower_0": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 20.62574609561232,
+      "minimum_h": 1.2912480728594904,
+      "minimum_psi1": 5.164829093189208
+    },
+    "cf4/upper_1": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 31.823,
+      "minimum_h": 1.991,
+      "minimum_psi1": 7.964
+    },
+    "cf4/lower_1": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 3.022986755557738,
+      "minimum_h": 0.19099917225644636,
+      "minimum_psi1": 0.7639966889488731
+    },
+    "cf4/upper_2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 3.346200000000001,
+      "minimum_h": 0.21120000000000005,
+      "minimum_psi1": 0.8448000000000002
+    },
+    "cf4/lower_2": {
+      "samples": 2378,
+      "binding_samples": 0,
+      "nominal_unsafe_samples": 0,
+      "bounded_free_unsafe_samples": 0,
+      "minimum_filtered_residual": 4.768310127330957,
+      "minimum_h": 0.300081882958186,
+      "minimum_psi1": 1.2003275318327413
+    }
+  },
+  "slew_relaxed_agent_samples": 0,
+  "maximum_reference_slew_mps3": 0.8,
+  "maximum_local_qp_wall_s": 0.0007957769994391128,
+  "qp_diagnostics_collected": true,
+  "qp_binding_agent_samples": 454,
+  "inequality_solver_agent_samples": 454,
+  "nominal_hocbf_violation_agent_samples": 454
+}

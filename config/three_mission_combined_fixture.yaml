@@ -1,0 +1,19 @@
+frame_id: world
+scope: Numerical fixture only; capture actual grounded aircraft before hardware check
+positions:
+  cf2:
+  - -0.7
+  - 0.0
+  - 0.0298
+  cf3:
+  - 0.1
+  - 0.8
+  - 0.0298
+  cf4:
+  - 0.6
+  - -0.85
+  - 0.0298
+yaw_rad:
+  cf2: 0.1
+  cf3: 0.2
+  cf4: -0.1

@@ -1,8 +1,8 @@
-# Safe REDCHO Three-Aircraft Position Control
+# Safe REDCHO Formation Acquisition
 
-Three-aircraft dual-REDCHO/HOCBF-QP position control with a prechecked slow handover.
+Three-aircraft formation acquisition, height/yaw alignment, translation and surveyed obstacle experiments.
 
-**Edition:** `three-v0.1.0` · **Aircraft:** Three: cf2, cf3, cf4 · **Interface:** Position and yaw
+**Edition:** `mission-v0.1.0` · **Aircraft:** Three: cf2, cf3, cf4 · **Interface:** Position and yaw
 
 The repository starts private for review. Each tag contains a complete edition
 and guides. The current checkout's controller is identified in `release.json`.
@@ -19,8 +19,8 @@ and guides. The current checkout's controller is identified in `release.json`.
 Ubuntu 24.04 / Python 3.12:
 
 ```bash
-git clone --branch three-v0.1.0 --depth 1 https://github.com/khubaib007/safe-redcho-hardware.git safe-redcho-hw-three
-cd safe-redcho-hw-three
+git clone --branch mission-v0.1.0 --depth 1 https://github.com/khubaib007/safe-redcho-hardware.git safe-redcho-hw-mission
+cd safe-redcho-hw-mission
 bash scripts/setup.sh offline
 bash scripts/verify.sh
 bash scripts/test.sh

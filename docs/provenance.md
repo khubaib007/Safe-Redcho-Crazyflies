@@ -1,4 +1,4 @@
-# Provenance: three-v0.1.0
+# Provenance: mission-v0.1.0
 
 Prepared from the existing hardware workspace on 31 October 2026. These are
 standalone source snapshots, not recreated historical Git commits. The active

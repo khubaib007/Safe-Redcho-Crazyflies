@@ -1,4 +1,4 @@
-# Validation status: three-v0.1.0
+# Validation status: mission-v0.1.0
 
 Release preparation date: 31 October 2026, Asia/Riyadh.
 
@@ -22,10 +22,10 @@ workspace/configuration at that time, not automatically to this prepared snapsho
 
 ## Completed software verification
 
-- 107 unit/adaptor/GUI/config tests ran; all passed.
-- Offline scenarios passed: offline_default.
+- 180 unit/adaptor/GUI/config tests ran; two original bundle installer tests skipped; all other tests passed.
+- Offline scenarios passed: offline_interagent, offline_combined, offline_default, offline_obstacle.
 - Six pinned upstream backend/interface packages built from exported exact commits plus both local patches.
-- All 6 edition packages built against that fresh backend.
+- All 2 edition packages built against that fresh backend.
 - Actual ROS interfaces and binaries verified without initializing a node.
 - Dependency fetcher patch application and idempotent checks passed using clean local Git clones at every pinned revision.
 - No live radio, Motive stream, firmware readback or physical flight was performed.
