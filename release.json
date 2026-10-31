@@ -1,11 +1,14 @@
 {
-  "edition": "flight",
-  "title": "Safe REDCHO Six-Aircraft Full-State",
+  "edition": "three",
+  "title": "Safe REDCHO Three-Aircraft Position Control",
   "version": "0.1.0",
-  "tag": "flight-v0.1.0",
+  "tag": "three-v0.1.0",
   "packages": [
     "safe_redcho_bringup",
     "safe_redcho_flight",
-    "safe_redcho_telemetry"
+    "safe_redcho_telemetry",
+    "safe_redcho_three",
+    "safe_redcho_three_telemetry",
+    "safe_redcho_three_liveplots"
   ]
 }

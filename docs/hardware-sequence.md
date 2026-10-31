@@ -15,9 +15,9 @@ Always use the same checkout and scenario in every terminal.
 8. After successful commissioning: `bash scripts/run.sh fly` performs translation
    and recovery/landing. This is a physical-flight command.
 
-The six-aircraft edition sends full-state references. Verify actual firmware and
-controller support before commissioning that interface. It is preserved as a
-distinct legacy edition, not automatically promoted to the newest position stack.
+Only cf2/cf3/cf4 are active. The pre-arm handover geometry must pass. The
+slow position bridge settles before REDCHO ALIGN/FORWARD begins. Do not start a
+six-aircraft backend or other command publishers at the same time.
 
 For the applicable offline scenario use run.sh offline; it never replaces live
 capture. After verified landing/disarm, stop observers, agents/watchdog and backend

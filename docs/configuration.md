@@ -1,4 +1,4 @@
-# Configuration: flight-v0.1.0
+# Configuration: three-v0.1.0
 
 Initialize editable files once:
 
@@ -38,7 +38,7 @@ file. Changing configured initial_position does not move the physical aircraft.
 
 ## Edition's profile
 
-Use `config/local/redcho_hardware.yaml` and its referenced `fleet_redcho.yaml`. Six names cf1–cf6 are mandatory. The full formation sweep must fit the inflated arena.
+Use `config/local/redcho_three.yaml`; only cf2/cf3/cf4 are active. The fleet inventory still contains six entries for URI validation, while the backend is restricted to the active three. The handover geometry is checked before arming.
 
 Do not edit generated backend configurations. They are overwritten. Do not mix
 nodes from different editions or overlays. Domain 43 separates the documented

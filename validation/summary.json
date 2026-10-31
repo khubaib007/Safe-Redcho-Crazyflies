@@ -1,13 +1,13 @@
 {
   "status": "PASS_SOFTWARE_ONLY",
-  "edition": "flight",
-  "unit_adapter_gui_tests_run": 68,
+  "edition": "three",
+  "unit_adapter_gui_tests_run": 107,
   "skipped_tests": 0,
   "offline_cases": [
     "offline_default"
   ],
   "pinned_backend_packages_built": 6,
-  "edition_packages_built": 3,
+  "edition_packages_built": 6,
   "actual_ros_interface_imports": "PASS_NO_NODE_INITIALIZATION",
   "dependency_patch_application": "PASS_FROM_CLEAN_LOCAL_GIT_CLONES",
   "live_radio_mocap_firmware_flight": "NOT_RUN",

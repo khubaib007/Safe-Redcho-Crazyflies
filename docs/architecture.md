@@ -1,6 +1,6 @@
 # Architecture
 
-Original six-aircraft distributed dual-REDCHO reference governor with reciprocal HOCBF-QP.
+Three-aircraft dual-REDCHO/HOCBF-QP position control with a prechecked slow handover.
 
 Motive → NatNet → motion_capture_tracking → `/poses` → Crazyswarm2 C++ server
 → Crazyradio → onboard estimator/controller. Pose/status returns to the host.
@@ -30,7 +30,7 @@ allowances. Physical tracking is monitored separately. A safe virtual reference
 does not establish arbitrary disturbed-aircraft safety. These hardware stacks
 do not compute or send the four motor forces used in the simulation repository.
 
-This edition sends FullState messages containing reference position, orientation, velocity and acceleration. It uses six agents and ALIGN/FORWARD/STOP phases. FullState support and onboard behavior must be commissioned with the actual firmware; this publication does not establish fresh RF/firmware execution.
+This edition sends position/yaw only. Velocity/acceleration remain computed reference quantities, not fields transmitted in Position messages. A geometrically checked slow bridge brings the planned takeoff hover to existing slots before REDCHO ALIGN begins; that bridge itself does not run the REDCHO/QP controller.
 
 Diagnostics preserve source/receipt clocks and algorithm session/sequence where
 available. Position messages do not encode algorithm sequence or onboard receipt.

@@ -1,0 +1,14 @@
+test_all_eight_windows_render_both_axes_and_missing_state (test_gui.GUIRenderingTests.test_all_eight_windows_render_both_axes_and_missing_state) ... This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.396s
+
+OK

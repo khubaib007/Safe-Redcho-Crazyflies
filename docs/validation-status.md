@@ -1,4 +1,4 @@
-# Validation status: flight-v0.1.0
+# Validation status: three-v0.1.0
 
 Release preparation date: 31 October 2026, Asia/Riyadh.
 
@@ -22,10 +22,10 @@ workspace/configuration at that time, not automatically to this prepared snapsho
 
 ## Completed software verification
 
-- 68 unit/adaptor/GUI/config tests ran; all passed.
+- 107 unit/adaptor/GUI/config tests ran; all passed.
 - Offline scenarios passed: offline_default.
 - Six pinned upstream backend/interface packages built from exported exact commits plus both local patches.
-- All 3 edition packages built against that fresh backend.
+- All 6 edition packages built against that fresh backend.
 - Actual ROS interfaces and binaries verified without initializing a node.
 - Dependency fetcher patch application and idempotent checks passed using clean local Git clones at every pinned revision.
 - No live radio, Motive stream, firmware readback or physical flight was performed.

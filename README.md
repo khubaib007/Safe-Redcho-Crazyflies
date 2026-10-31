@@ -1,8 +1,8 @@
-# Safe REDCHO Six-Aircraft Full-State
+# Safe REDCHO Three-Aircraft Position Control
 
-Original six-aircraft distributed dual-REDCHO reference governor with reciprocal HOCBF-QP.
+Three-aircraft dual-REDCHO/HOCBF-QP position control with a prechecked slow handover.
 
-**Edition:** `flight-v0.1.0` · **Aircraft:** Six: cf1–cf6 · **Interface:** Full-state position/velocity/acceleration references
+**Edition:** `three-v0.1.0` · **Aircraft:** Three: cf2, cf3, cf4 · **Interface:** Position and yaw
 
 The repository starts private for review. Each tag contains a complete edition
 and guides. The current checkout's controller is identified in `release.json`.
@@ -19,8 +19,8 @@ and guides. The current checkout's controller is identified in `release.json`.
 Ubuntu 24.04 / Python 3.12:
 
 ```bash
-git clone --branch flight-v0.1.0 --depth 1 https://github.com/khubaib007/safe-redcho-hardware.git safe-redcho-hw-flight
-cd safe-redcho-hw-flight
+git clone --branch three-v0.1.0 --depth 1 https://github.com/khubaib007/safe-redcho-hardware.git safe-redcho-hw-three
+cd safe-redcho-hw-three
 bash scripts/setup.sh offline
 bash scripts/verify.sh
 bash scripts/test.sh

@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "edition": "flight",
+  "edition": "three",
   "checks": [
     {
       "command": [
@@ -23,13 +23,25 @@
     },
     {
       "command": [
-        "scripts/run.py",
-        "offline",
-        "--output",
-        "$CHECKOUT/results/tests_20261031T193234_880682Z/offline_default"
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "src/safe_redcho_three_liveplots/test",
+        "-v"
       ],
       "exit_code": 0,
       "log": "02.log"
+    },
+    {
+      "command": [
+        "scripts/run.py",
+        "offline",
+        "--output",
+        "$CHECKOUT/results/tests_20261031T193234_878964Z/offline_default"
+      ],
+      "exit_code": 0,
+      "log": "03.log"
     }
   ],
   "scope": "Software, test-double and numerical checks only; no radio, live motion capture or aircraft commands"

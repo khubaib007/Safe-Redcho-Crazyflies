@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>safe_redcho_three_telemetry</name><version>0.1.0</version>
+  <description>Read-only hardware and algorithm telemetry for Safe REDCHO.</description>
+  <maintainer email="73326570+khubaib007@users.noreply.github.com">Safe REDCHO project</maintainer><license>MIT</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>rcl_interfaces</exec_depend>
+  <exec_depend>std_msgs</exec_depend><exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>crazyflie_interfaces</exec_depend><exec_depend>motion_capture_tracking_interfaces</exec_depend>
+  <exec_depend>rosidl_runtime_py</exec_depend><exec_depend>launch</exec_depend><exec_depend>launch_ros</exec_depend>
+  <exec_depend>python3-numpy</exec_depend><exec_depend>python3-yaml</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>
