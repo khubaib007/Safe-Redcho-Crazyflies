@@ -8,6 +8,14 @@ visibility guidance and local hard **HOCBF-QPs**. The hardware receives position
 plus yaw. This is the restored 0.3.0 baseline with scoped Ctrl+C cleanup and the
 verified duplicate-backend startup fix; publication does not relax safety bounds.
 
+## Real flight data replay
+
+![Single position REDCHO physical flight data replay](docs/single-position/media/Flight_preview_4x.gif)
+
+User-provided real flight data replay for **cf2, cf3 and cf4**, showing measured trajectories and published references. The recorded control interval is shown; **recovery landing is excluded**. The obstacle is displayed as its configured XY footprint; its physical height is not reconstructed.
+
+[Replay details and original GIF](docs/single-position/REAL_FLIGHT_REPLAY.md).
+
 ## Get started
 
 ```bash

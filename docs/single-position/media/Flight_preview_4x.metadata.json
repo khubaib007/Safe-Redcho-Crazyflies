@@ -1,0 +1,20 @@
+{
+  "file": "Flight_preview_4x.gif",
+  "source": "User-provided real flight data replay",
+  "edition": "single-position-v0.3.0",
+  "aircraft": [
+    "cf2",
+    "cf3",
+    "cf4"
+  ],
+  "added_date": "2026-11-07",
+  "dimensions_px": [
+    800,
+    450
+  ],
+  "frames": 216,
+  "gif_playback_duration_s": 21.6,
+  "bytes": 13083106,
+  "sha256": "b82617eadbae97a073e96b61a7b7baff98acf719c54c3b6b59cb0403ba49e974",
+  "scope": "Recorded control interval; recovery landing excluded. Measured trajectories and published references. Obstacle displayed as configured XY footprint; physical height not reconstructed."
+}

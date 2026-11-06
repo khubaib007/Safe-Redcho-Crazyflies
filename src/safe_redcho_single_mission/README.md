@@ -10,6 +10,14 @@ See [MATHEMATICAL_FORMULATION.md](MATHEMATICAL_FORMULATION.md) for the complete 
 
 Use the [repository starting guide](../../docs/single-position/START_HERE.md) for portable installation and complete commands. Original workstation paths below describe the source layout; the repository wrapper uses `config/local/`. The current snapshot also includes scoped Ctrl+C cleanup and duplicate-backend startup protection.
 
+## Real flight data replay
+
+![Physical flight data replay: cf2, cf3 and cf4](../../docs/single-position/media/Flight_preview_4x.gif)
+
+User-provided real flight data replay for **cf2, cf3 and cf4**, showing measured trajectories and published references. The recorded control interval is shown; **recovery landing is excluded**. The obstacle is displayed as its configured XY footprint; its physical height is not reconstructed.
+
+[Replay details](../../docs/single-position/REAL_FLIGHT_REPLAY.md).
+
 ## Architecture
 
 Battery voltage changes each local trajectory phase. The same acquisition/forward SVFs generate displacement, velocity, acceleration and jerk. Each agent supplies its absolute position proposal plus its first two derivatives to one position bank:
