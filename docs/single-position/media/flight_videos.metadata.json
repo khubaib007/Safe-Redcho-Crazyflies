@@ -1,0 +1,69 @@
+{
+  "source": "User-provided hardware recordings",
+  "edition": "single-position-v0.3.0",
+  "added_date": "2026-11-07",
+  "files": [
+    {
+      "filename": "Motive View.mp4",
+      "sha256": "3aa1b6b040ed4c9f89aad380c93438e347d3fbb136f8a9d0f37fb0abdb8ae97d",
+      "bytes": 6526523,
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          },
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1896,
+            "height": 1028
+          }
+        ],
+        "format": {
+          "duration": "107.866667",
+          "size": "6526523"
+        }
+      },
+      "release_asset": "Motive-View.mp4"
+    },
+    {
+      "filename": "Live stream.MOV",
+      "sha256": "e71b39214a5d157366a43a00f86bfdc06d0b8960c2d6a2d8681891142310748e",
+      "bytes": 189888325,
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "hevc",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          },
+          {
+            "codec_type": "data"
+          },
+          {
+            "codec_type": "data"
+          },
+          {
+            "codec_type": "data"
+          },
+          {
+            "codec_type": "data"
+          }
+        ],
+        "format": {
+          "duration": "100.496667",
+          "size": "189888325"
+        }
+      },
+      "release_asset": "Live-stream.MOV"
+    }
+  ]
+}

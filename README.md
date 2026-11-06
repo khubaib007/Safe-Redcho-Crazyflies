@@ -16,6 +16,15 @@ User-provided real flight data replay for **cf2, cf3 and cf4**, showing measured
 
 [Replay details and original GIF](docs/single-position/REAL_FLIGHT_REPLAY.md).
 
+## Hardware recordings
+
+- [Motive View.mp4 — original motion-capture view](https://github.com/khubaib007/Safe-Redcho-Crazyflies/releases/download/single-position-v0.3.0/Motive-View.mp4)
+- [Live stream.MOV — original camera recording](https://github.com/khubaib007/Safe-Redcho-Crazyflies/releases/download/single-position-v0.3.0/Live-stream.MOV)
+
+Both recordings are preserved unchanged as downloadable release assets. The
+live recording was supplied as `.MOV`, rather than `.mp4`.
+[Recording details](docs/single-position/HARDWARE_VIDEOS.md).
+
 ## Get started
 
 ```bash

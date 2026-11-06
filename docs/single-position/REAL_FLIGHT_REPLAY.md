@@ -21,3 +21,5 @@ excluded recovery landing or a complete flight-validation result.
 
 The controller source, parameters and existing release tag are unchanged by
 this media/documentation addition.
+
+Related: [original Motive and physical flight recordings](HARDWARE_VIDEOS.md).
