@@ -14,6 +14,12 @@ parser.add_argument('--output',type=Path)
 args,extra=parser.parse_known_args()
 output=args.output or ROOT/'results'/(args.action+'_'+time.strftime('%Y%m%dT%H%M%SZ',time.gmtime()))
 
+if EDITION=='single-position':
+    command=[sys.executable,str(ROOT/'scripts/single_run.py'),args.scenario,args.action]
+    if args.output:command+=['--output',str(args.output)]
+    os.execv(sys.executable,command+extra)
+
+
 def execute(command):
     print('Running:',*command,flush=True)
     os.execvp(command[0],command)

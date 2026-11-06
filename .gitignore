@@ -17,3 +17,7 @@ __pycache__/
 *.zip
 *.tar.gz
 .env
+
+/build_single_position/
+/install_single_position/
+/log_single_position/

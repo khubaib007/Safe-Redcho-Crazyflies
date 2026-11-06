@@ -1,0 +1,14 @@
+{
+  "status": "DUPLICATE_BACKEND_CLEARED_AND_GUARDED",
+  "controller_version": "0.3.0",
+  "obsolete_pid": 91070,
+  "cleanup_signals": [
+    "SIGINT"
+  ],
+  "tests_passed": 42,
+  "isolated_dds_status": "PASS",
+  "hardware_domain_startup": "CLEAR",
+  "physical_flight_test_performed": false,
+  "hardware_ground_check": "REQUIRES_RESTARTED_STACK",
+  "controller_and_profiles_unchanged": true
+}

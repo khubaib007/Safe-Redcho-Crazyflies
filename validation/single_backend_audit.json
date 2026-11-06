@@ -1,0 +1,11 @@
+{
+  "original_release_file_count": 98,
+  "files_differing_from_v030_release": [
+    "src/safe_redcho_single_mission/launch/backend.launch.py",
+    "src/safe_redcho_single_mission/safe_redcho_single_mission/mission.py",
+    "src/safe_redcho_single_mission/safe_redcho_single_mission/run.py",
+    "src/safe_redcho_single_mission/test/test_ros_adapters.py"
+  ],
+  "all_other_original_release_files_identical": true,
+  "source_and_installed_guard_match": true
+}

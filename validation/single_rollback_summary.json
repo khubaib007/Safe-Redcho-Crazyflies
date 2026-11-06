@@ -1,0 +1,24 @@
+{
+  "status": "PASS_RESTORED_AND_REBUILT",
+  "version": "0.3.0",
+  "release_manifest": "results/single_route_validation_20261104/source_sha256.json",
+  "exact_release_checkpoint": "results/checkpoints/single_v0.3.0_recovered_20261106",
+  "release_files_verified": 98,
+  "backup": "results/checkpoints/single_before_v030_rollback_20261106T152628Z",
+  "backup_files_verified": 150,
+  "retained_requested_ctrl_c_cleanup": true,
+  "release_hash_exceptions": [
+    "src/safe_redcho_single_mission/safe_redcho_single_mission/run.py"
+  ],
+  "live_hardware_processes_stopped": false,
+  "aircraft_commands_sent": false,
+  "previous_install_build_archived": true,
+  "tests_passed": 64,
+  "tests_skipped": 0,
+  "installed_version": "0.3.0",
+  "installed_modules_matched": 48,
+  "numerical_cycles": 3130,
+  "numerical_status": "PASS",
+  "combined_forward_duration_s": 20.0,
+  "profile_readiness": "RECAPTURE_REQUIRED"
+}

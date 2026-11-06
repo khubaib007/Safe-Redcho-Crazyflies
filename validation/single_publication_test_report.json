@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "edition": "single-position",
+  "checks": [
+    {
+      "command": [
+        "scripts/verify.py"
+      ],
+      "exit_code": 0,
+      "log": "00.log"
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "01.log"
+    },
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "src/safe_redcho_single_mission/test",
+        "-q",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "exit_code": 0,
+      "log": "02.log"
+    },
+    {
+      "command": [
+        "scripts/run.py",
+        "offline",
+        "--output",
+        "$CHECKOUT/results/tests_20261106T184650_222608Z/offline_default"
+      ],
+      "exit_code": 0,
+      "log": "03.log"
+    },
+    {
+      "command": [
+        "scripts/run.py",
+        "offline",
+        "--scenario",
+        "combined",
+        "--output",
+        "$CHECKOUT/results/tests_20261106T184650_222608Z/offline_combined"
+      ],
+      "exit_code": 0,
+      "log": "04.log"
+    },
+    {
+      "command": [
+        "scripts/run.py",
+        "offline",
+        "--scenario",
+        "interagent",
+        "--output",
+        "$CHECKOUT/results/tests_20261106T184650_222608Z/offline_interagent"
+      ],
+      "exit_code": 0,
+      "log": "05.log"
+    },
+    {
+      "command": [
+        "scripts/run.py",
+        "offline",
+        "--scenario",
+        "obstacle",
+        "--output",
+        "$CHECKOUT/results/tests_20261106T184650_222608Z/offline_obstacle"
+      ],
+      "exit_code": 0,
+      "log": "06.log"
+    }
+  ],
+  "scope": "Software, test-double and numerical checks only; no radio, live motion capture or aircraft commands"
+}

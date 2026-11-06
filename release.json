@@ -1,10 +1,13 @@
 {
-  "edition": "mission",
-  "title": "Safe REDCHO Formation Acquisition",
-  "version": "0.1.0",
-  "tag": "mission-v0.1.0",
+  "edition": "single-position",
+  "title": "Single Position REDCHO Hardware Baseline",
+  "version": "0.3.0",
+  "tag": "single-position-v0.3.0",
   "packages": [
     "safe_redcho_bringup",
-    "safe_redcho_three_mission"
-  ]
+    "safe_redcho_three_mission",
+    "safe_redcho_single_mission"
+  ],
+  "primary_package": "safe_redcho_single_mission",
+  "baseline": "Restored 0.3.0 plus scoped Ctrl+C cleanup and duplicate-backend startup protection"
 }

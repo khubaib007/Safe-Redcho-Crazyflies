@@ -1,0 +1,10 @@
+{
+  "status": "PASS_LOCAL_SOFTWARE",
+  "profile": "/tmp/safe-redcho-hardware-publish-20261106/config/single_mission_combined.yaml",
+  "radio_uris": {
+    "cf2": "radio://0/40/2M/E7E7E7E702",
+    "cf3": "radio://1/60/2M/E7E7E7E703",
+    "cf4": "radio://2/80/2M/E7E7E7E704"
+  },
+  "scope": "No ROS graph, live timing, firmware, RF or hardware verification"
+}

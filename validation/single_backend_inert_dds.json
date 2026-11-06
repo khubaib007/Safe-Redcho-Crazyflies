@@ -1,0 +1,65 @@
+{
+  "domain": 181,
+  "aircraft_commands_sent": 0,
+  "cases": {
+    "standalone_context_clear": "CLEAR",
+    "initial_clear": "CLEAR",
+    "duplicate_backend_error": "backend subscribers=2 (need 1), control recorders=0 (allow 0 or 1), unexpected=[]; with aircraft grounded/disarmed, close obsolete backend/observer launches",
+    "duplicate_backend_startup_refused": "Backend not started: /cf2/cmd_position: existing subscriber {'namespace': '/', 'name': 'crazyflie_server', 'type': 'crazyflie_interfaces/msg/Position'}; /cf2/cmd_position: existing subscriber {'namespace': '/', 'name': 'crazyflie_server', 'type': 'crazyflie_interfaces/msg/Position'}; /cf3/cmd_position: existing subscriber {'namespace': '/', 'name': 'crazyflie_server', 'type': 'crazyflie_interfaces/msg/Position'}; /cf3/cmd_position: existing subscriber {'namespace': '/', 'name': 'crazyflie_server', 'type': 'crazyflie_interfaces/msg/Position'}; /cf4/cmd_position: existing subscriber {'namespace': '/', 'name': 'crazyflie_server', 'type': 'crazyflie_interfaces/msg/Position'}; /cf4/cmd_position: existing subscriber {'namespace': '/', 'name': 'crazyflie_server', 'type': 'crazyflie_interfaces/msg/Position'}. Close the old stack/standalone mocap while grounded and disarmed. Report: /home/khubaib/safe_redcho_hardware/results/single_v030_backend_fix_20261106/inert/results/single_backend_startup/20261106T181046_884392Z_3141af.json",
+    "one_backend_accepted_by_preflight": true,
+    "one_existing_backend_startup_refused": "Backend not started: /cf2/cmd_position: existing subscriber {'namespace': '_NODE_NAMESPACE_UNKNOWN_', 'name': '_NODE_NAME_UNKNOWN_', 'type': 'crazyflie_interfaces/msg/Position'}; /cf3/cmd_position: existing subscriber {'namespace': '_NODE_NAMESPACE_UNKNOWN_', 'name': '_NODE_NAME_UNKNOWN_', 'type': 'crazyflie_interfaces/msg/Position'}; /cf4/cmd_position: existing subscriber {'namespace': '_NODE_NAMESPACE_UNKNOWN_', 'name': '_NODE_NAME_UNKNOWN_', 'type': 'crazyflie_interfaces/msg/Position'}. Close the old stack/standalone mocap while grounded and disarmed. Report: /home/khubaib/safe_redcho_hardware/results/single_v030_backend_fix_20261106/inert/results/single_backend_startup/20261106T181050_134843Z_d2456e.json",
+    "after_cleanup_clear": "CLEAR",
+    "standalone_mocap_startup_refused": "Backend not started: /poses: existing publisher(s) [{'namespace': '/', 'name': 'motion_capture_tracking', 'type': 'motion_capture_tracking_interfaces/msg/NamedPoseArray'}]. Close the old stack/standalone mocap while grounded and disarmed. Report: /home/khubaib/safe_redcho_hardware/results/single_v030_backend_fix_20261106/inert/results/single_backend_startup/20261106T181057_500984Z_3faf33.json"
+  },
+  "duplicate_snapshot": {
+    "/poses": {
+      "publishers": []
+    },
+    "/cf2/cmd_position": {
+      "publishers": [],
+      "subscribers": [
+        {
+          "namespace": "/",
+          "name": "crazyflie_server",
+          "type": "crazyflie_interfaces/msg/Position"
+        },
+        {
+          "namespace": "/",
+          "name": "crazyflie_server",
+          "type": "crazyflie_interfaces/msg/Position"
+        }
+      ]
+    },
+    "/cf3/cmd_position": {
+      "publishers": [],
+      "subscribers": [
+        {
+          "namespace": "/",
+          "name": "crazyflie_server",
+          "type": "crazyflie_interfaces/msg/Position"
+        },
+        {
+          "namespace": "/",
+          "name": "crazyflie_server",
+          "type": "crazyflie_interfaces/msg/Position"
+        }
+      ]
+    },
+    "/cf4/cmd_position": {
+      "publishers": [],
+      "subscribers": [
+        {
+          "namespace": "/",
+          "name": "crazyflie_server",
+          "type": "crazyflie_interfaces/msg/Position"
+        },
+        {
+          "namespace": "/",
+          "name": "crazyflie_server",
+          "type": "crazyflie_interfaces/msg/Position"
+        }
+      ]
+    }
+  },
+  "status": "PASS"
+}

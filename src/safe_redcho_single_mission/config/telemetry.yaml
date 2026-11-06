@@ -1,0 +1,80 @@
+names:
+- cf2
+- cf3
+- cf4
+algorithm_profile_file: ~/safe_redcho_hardware/config/single_mission.yaml
+onboard_config_file: ~/safe_redcho_hardware/config/single_mission_onboard.yaml
+output_root: ~/safe_redcho_hardware/results/single_mission_telemetry
+subscription_depth: 64
+mocap_maximum_source_age_s: 0.15
+mocap_maximum_source_gap_s: 0.08
+writer:
+  queue_batches: 4096
+  flush_s: 0.5
+  layout: wide
+convergence_thresholds:
+  position_redcho:
+    velocity_mps: 0.08
+    acceleration_mps2: 0.15
+    position_m: 0.04
+nodes:
+  flight:
+    record_enabled: true
+    terminal_enabled: false
+    terminal_period_s: 1.0
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - '*'
+    variables: {}
+    algorithm_groups: []
+    derive_mocap_velocity: true
+  reference:
+    record_enabled: true
+    terminal_enabled: false
+    terminal_period_s: 1.0
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - '*'
+    variables: {}
+    algorithm_groups:
+    - governor
+    - svf
+    - formation_shape
+    derive_mocap_velocity: true
+  redcho:
+    record_enabled: true
+    terminal_enabled: false
+    terminal_period_s: 1.0
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - '*'
+    variables: {}
+    algorithm_groups:
+    - position_redcho
+    derive_mocap_velocity: true
+  control:
+    record_enabled: true
+    terminal_enabled: false
+    terminal_period_s: 1.0
+    include_variables:
+    - '*'
+    exclude_variables:
+    - __none__
+    terminal_variables:
+    - '*'
+    variables: {}
+    algorithm_groups:
+    - nominal
+    - qp
+    - formation_shape
+    - avoidance
+    derive_mocap_velocity: true

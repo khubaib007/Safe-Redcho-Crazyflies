@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "edition": "single-position",
+  "tag": "single-position-v0.3.0",
+  "package": "safe_redcho_single_mission",
+  "package_tests": {
+    "passed": 241,
+    "skipped": 2,
+    "warnings": 4,
+    "wall_s": 361.19
+  },
+  "repository_tests": {
+    "passed": 52,
+    "includes_portable_runner_tests": 5
+  },
+  "numerical_scenarios": {
+    "default": {
+      "status": "PASS",
+      "cycles": 2480,
+      "duration_s": 49.600000000002154
+    },
+    "combined": {
+      "status": "PASS",
+      "cycles": 3130,
+      "duration_s": 62.60000000000419
+    },
+    "interagent": {
+      "status": "PASS",
+      "cycles": 2658,
+      "duration_s": 53.16000000000271
+    },
+    "obstacle": {
+      "status": "PASS",
+      "cycles": 2401,
+      "duration_s": 48.02000000000191
+    }
+  },
+  "build": {
+    "status": "PASS",
+    "first_party_packages": 3,
+    "backend_prefix": "Existing hardware install overlay; three pinned patched native files verified byte-identical"
+  },
+  "ros_interfaces_and_backend_binaries": "PASS",
+  "local_doctor": "PASS_LOCAL_SOFTWARE",
+  "all_package_python_source_matches_current_workspace": true,
+  "all_profile_numeric_parameters_unchanged": true,
+  "physical_flight_performed": false,
+  "visibility": "PRIVATE",
+  "release_kind": "prerelease"
+}

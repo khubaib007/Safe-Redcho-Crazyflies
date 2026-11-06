@@ -1,0 +1,13 @@
+................................................ss...................... [ 29%]
+........................................................................ [ 59%]
+........................................................................ [ 88%]
+...........................                                              [100%]
+=============================== warnings summary ===============================
+test/test_responsibility.py::test_frozen_obstacle_pair_conflict_yields_to_the_free_peer
+test/test_route_guidance.py::test_recorded_blocked_routes_complete_full_single_bank_mission[voltages1-194330_544226Z]
+test/test_route_guidance.py::test_recorded_blocked_routes_complete_full_single_bank_mission[voltages1-182422_163997Z]
+test/test_route_guidance.py::test_recorded_blocked_routes_complete_full_single_bank_mission[voltages1-182707_600308Z]
+  Warning: Values in x were outside bounds during a minimize step, clipping to bounds
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+241 passed, 2 skipped, 4 warnings in 361.19s (0:06:01)

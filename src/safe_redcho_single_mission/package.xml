@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>safe_redcho_single_mission</name><version>0.3.0</version>
+  <description>Single position REDCHO acquisition and charge-aware translation for cf2 cf3 cf4.</description>
+  <maintainer email="maintainer@example.invalid">Khubaib Ahmad</maintainer><license>MIT</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>std_msgs</exec_depend><exec_depend>geometry_msgs</exec_depend><exec_depend>rcl_interfaces</exec_depend><exec_depend>rosidl_runtime_py</exec_depend>
+  <exec_depend>motion_capture_tracking_interfaces</exec_depend><exec_depend>crazyflie_interfaces</exec_depend><exec_depend>ament_index_python</exec_depend><exec_depend>launch</exec_depend><exec_depend>launch_ros</exec_depend>
+  <exec_depend>python3-numpy</exec_depend><exec_depend>python3-scipy</exec_depend><exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-pyqtgraph</exec_depend>
+  <test_depend>python3-pytest</test_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>
