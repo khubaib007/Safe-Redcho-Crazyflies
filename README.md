@@ -13,6 +13,7 @@ and guides. The current checkout's controller is identified in `release.json`.
 | Six-Aircraft Full-State | Original six-agent REDCHO/HOCBF reference control | [flight](https://github.com/khubaib007/safe-redcho-hardware/releases/tag/flight-v0.1.0) |
 | Three-Aircraft Position Control | Three-agent adaptation and slow handover | [three](https://github.com/khubaib007/safe-redcho-hardware/releases/tag/three-v0.1.0) |
 | Formation Acquisition | Current mission and surveyed obstacle experiments | [mission](https://github.com/khubaib007/safe-redcho-hardware/releases/tag/mission-v0.1.0) |
+| Single Position REDCHO | Separate single-bank hardware baseline, formation and HOCBF-QP | [single-position-v0.3.0](https://github.com/khubaib007/Safe-Redcho-Crazyflies/releases/tag/single-position-v0.3.0) |
 
 ## Start offline: no ROS or aircraft needed
 
@@ -85,3 +86,7 @@ own upstream license files. No full experiment datasets, virtual environments,
 editor indexes, radio credentials or generated build products are source commits.
 
 Companion project: [Safe REDCHO simulation](https://github.com/khubaib007/safe-redcho-simulation). Its native motor-level simulation validation is separate from hardware commissioning.
+
+The new single-bank package and complete run guide are on the
+[`single-position` branch](https://github.com/khubaib007/Safe-Redcho-Crazyflies/tree/single-position/src/safe_redcho_single_mission)
+and in the `single-position-v0.3.0` release. Existing editions remain unchanged.
